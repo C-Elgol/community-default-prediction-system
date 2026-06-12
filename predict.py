@@ -6,14 +6,14 @@ MODEL_PATH = "models/default_risk_model.pkl"
 model = joblib.load(MODEL_PATH)
 
 sample_member = pd.DataFrame([{
-    "contribution_consistency": 0.6,
-    "repayment_punctuality": 0.1,
-    "default_history": 0.05,
-    "attendance_score": 0.5,
-    "savings_stability": 1.0,
-    "loan_to_savings_ratio": 0.0,
-    "average_overdue_days": 0.0,
-    "current_unpaid_loans": 1.0
+    "contribution_consistency": 65,
+    "repayment_punctuality": 55,
+    "default_history": 0,
+    "attendance_score": 60,
+    "savings_stability": 65,
+    "loan_to_savings_ratio": 2.0,
+    "average_overdue_days": 15,
+    "current_unpaid_loans": 1
 }])
 
 pd_risk = model.predict_proba(sample_member)[0][1]

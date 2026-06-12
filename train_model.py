@@ -8,7 +8,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, accuracy_score, roc_auc_score
 
 
-DATA_PATH = "data/community_loan_dataset_5000_records.csv"
+DATA_PATH = "data/community_loan_dataset_5000_balanced_noise.csv"
 MODEL_PATH = "models/default_risk_model.pkl"
 
 
@@ -38,7 +38,10 @@ def train_model():
 
     model = Pipeline([
         ("scaler", StandardScaler()),
-        ("classifier", LogisticRegression(max_iter=1000))
+        ("classifier", LogisticRegression(
+            max_iter=1000,
+            class_weight="balanced"
+        ))
     ])
 
     model.fit(X_train, y_train)
